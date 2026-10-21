@@ -186,6 +186,7 @@
 }
 
 @utility btn-primary {
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
