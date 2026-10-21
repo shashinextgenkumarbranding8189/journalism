@@ -228,3 +228,53 @@
     transform: scale(1.05);
   }
 }
+
+/* ---------- Animations ---------- */
+@keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scale-in { from { opacity: 0; transform: translateX(-50%) scale(0.6); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
+@keyframes rise { from { opacity: 0; transform: translate(-50%, 40px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
+@keyframes spin-slow { to { transform: translateX(-50%) rotate(360deg); } }
+@keyframes ping { 75%,100% { transform: scale(2.2); opacity: 0; } }
+@keyframes underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+@utility anim-fade-up { opacity: 0; animation: fade-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+@utility anim-fade-in { opacity: 0; animation: fade-in 1s ease forwards; }
+@utility anim-scale-in { opacity: 0; animation: scale-in 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s forwards; }
+@utility anim-rise { opacity: 0; animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s forwards; }
+@utility anim-float { animation: float 6s ease-in-out infinite; }
+@utility anim-spin-slow { border-style: dashed; animation: spin-slow 40s linear infinite; }
+@utility anim-ping { animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@utility anim-marquee { animation: marquee 28s linear infinite; }
+
+@utility ink-underline {
+  position: relative;
+  white-space: nowrap;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.12em;
+    background: var(--color-foreground);
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: underline 0.8s ease 1s forwards;
+  }
+}
+
+@utility hero-grid {
+  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
