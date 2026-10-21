@@ -141,34 +141,48 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section id="home" className="overflow-hidden">
-        <Container className="grid items-center gap-10 pt-12 lg:grid-cols-[1fr_1.15fr] lg:pt-16">
-          <div>
-            <span className="eyebrow">Independent Journalist</span>
-            <h1 className="mt-5 text-5xl font-extrabold leading-[0.95] md:text-7xl">
-              People.<br />Stories.<br /><span className="text-primary">A Stronger Haryana.</span>
+      <section id="home" className="relative overflow-hidden">
+        <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden />
+        <Container className="relative grid items-center gap-8 pt-10 sm:pt-14 lg:grid-cols-[1fr_1.1fr] lg:gap-6 lg:pt-12">
+          <div className="text-center lg:text-left">
+            <span className="eyebrow anim-fade-up">Independent Journalist · Haryana</span>
+            <h1 className="mt-5 text-[2.75rem] font-extrabold leading-[0.95] sm:text-6xl xl:text-[5.5rem]">
+              <span className="anim-fade-up block" style={{ animationDelay: "80ms" }}>People.</span>
+              <span className="anim-fade-up block" style={{ animationDelay: "180ms" }}>Stories.</span>
+              <span className="anim-fade-up block text-primary" style={{ animationDelay: "280ms" }}>
+                A <span className="ink-underline">Stronger</span> Haryana.
+              </span>
             </h1>
-            <p className="mt-6 max-w-md text-muted-foreground">
+            <p className="anim-fade-up mx-auto mt-6 max-w-md text-base text-muted-foreground sm:text-lg lg:mx-0" style={{ animationDelay: "400ms" }}>
               Ground reporting, real stories and people's voices from across Haryana. Journalism to inform, empower and bring positive change.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="anim-fade-up mt-8 flex flex-wrap justify-center gap-3 sm:gap-4 lg:justify-start" style={{ animationDelay: "520ms" }}>
               <a href="#reports" className="btn-primary">Explore My Work <ArrowRight className="h-4 w-4" /></a>
               <a href="#media" onClick={() => setPlaying(true)} className="btn-outline"><PlayCircle className="h-4 w-4" /> Watch Reel</a>
             </div>
+            <div className="anim-fade-up mt-10 hidden items-center gap-4 border-t border-border pt-6 text-xs text-muted-foreground lg:flex" style={{ animationDelay: "640ms" }}>
+              <span className="relative flex h-2.5 w-2.5"><span className="anim-ping absolute inset-0 rounded-full bg-primary" /><span className="relative h-2.5 w-2.5 rounded-full bg-primary" /></span>
+              Currently reporting on rural education & agriculture
+            </div>
           </div>
-          <div className="relative min-h-[420px] md:min-h-[540px]">
-            <div className="absolute right-[18%] top-[18%] h-56 w-56 rounded-full bg-primary md:h-72 md:w-72" aria-hidden />
-            <p className="absolute left-0 top-10 hidden -rotate-12 font-script text-3xl leading-tight text-muted-foreground md:block">
+
+          <div className="relative mx-auto h-[400px] w-full max-w-[560px] sm:h-[500px] lg:h-[580px]">
+            <div className="anim-scale-in absolute left-1/2 top-[14%] h-60 w-60 -translate-x-1/2 rounded-full bg-primary sm:h-80 sm:w-80 lg:h-96 lg:w-96" aria-hidden />
+            <div className="absolute left-1/2 top-[10%] h-72 w-72 -translate-x-1/2 rounded-full border border-primary/30 sm:h-96 sm:w-96 lg:h-[28rem] lg:w-[28rem] anim-spin-slow" aria-hidden />
+            <p className="anim-fade-in absolute left-0 top-6 hidden -rotate-12 font-script text-3xl leading-tight text-muted-foreground sm:block" style={{ animationDelay: "700ms" }}>
               People<br />Voices<br />Issues<br />Change
             </p>
-            <div className="absolute right-0 top-0 hidden w-44 space-y-3 md:block">
+            <img src={portrait} alt={`${NAME}, journalist`} width={896} height={1152} fetchPriority="high"
+              className="anim-rise absolute bottom-0 left-1/2 h-full w-auto max-w-none -translate-x-1/2 object-contain" />
+            <div className="anim-float absolute right-0 top-4 w-28 border-4 border-background shadow-xl sm:w-40" style={{ animationDelay: "0s" }}>
               <img src={school} alt="Reporting in a classroom" loading="lazy" width={1024} height={768} className="w-full grayscale" />
-              <img src={village} alt="Interview in a village" loading="lazy" width={1280} height={768} className="w-full shadow-xl" />
             </div>
-            <img src={portrait} alt={`${NAME}, journalist`} width={896} height={1152} className="relative mx-auto h-[420px] w-auto object-contain md:h-[540px]" />
-            <div className="absolute bottom-6 right-0 hidden border border-border bg-background p-4 shadow-lg md:block">
-              <Quote className="h-5 w-5 text-primary" />
-              <p className="mt-1 font-serif italic">Journalism is<br />people's power in action.</p>
+            <div className="anim-float absolute left-0 bottom-24 w-28 border-4 border-background shadow-xl sm:w-40" style={{ animationDelay: "1.5s" }}>
+              <img src={village} alt="Interview in a village" loading="lazy" width={1280} height={768} className="w-full" />
+            </div>
+            <div className="anim-fade-up absolute bottom-4 right-0 max-w-[200px] border-l-2 border-primary bg-background p-3 shadow-lg sm:p-4" style={{ animationDelay: "900ms" }}>
+              <Quote className="h-4 w-4 text-primary" />
+              <p className="mt-1 font-serif text-sm italic sm:text-base">Journalism is people's power in action.</p>
             </div>
           </div>
         </Container>
